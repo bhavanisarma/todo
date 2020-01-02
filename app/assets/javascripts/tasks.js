@@ -18,8 +18,7 @@ $(function(){
 
 	function toggleTask(e) {
       	var itemId = $(e.target).data("id");
-      	
-
+      
       	var doneValue = Boolean($(e.target).is(':checked'));
       	
 
@@ -39,9 +38,8 @@ $(function(){
 		$.get("/tasks").success( function( data ){
 			var htmlString = "";
 			$.each(data, function(index, task) {
-				
-			htmlString += taskHtml(task);
-		});
+				  htmlString += taskHtml(task);
+		    });
 			var ulTodos = $('.todo-list');
 			ulTodos.html(htmlString);
 
@@ -53,8 +51,8 @@ $(function(){
       		event.preventDefault();
       		var textbox = $('.new-todo');
       		var payload = {
-        	task: {
-          	title: textbox.val()
+        	 task: {
+          	 title: textbox.val()
         		}
       		};
       	$.post("/tasks", payload).success(function(data) {
